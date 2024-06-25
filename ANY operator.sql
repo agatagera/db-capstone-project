@@ -1,0 +1,9 @@
+-- DISPLAY ITEMS FOR WHICH HAVE MORE THAN 2 ORDERS 
+SELECT m.MenuName
+FROM menu m
+WHERE m.MenuID = ANY (
+    SELECT o.MenuID
+    FROM orders o
+    GROUP BY o.MenuID
+    HAVING COUNT(*) > 2
+);
