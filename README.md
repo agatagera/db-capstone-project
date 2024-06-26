@@ -343,7 +343,21 @@ END;//
 DELIMITER ;
 ```
 
+## Create a bar chart that shows customers sales and filter data based on sales with at least $70
+![Customer_sales](https://github.com/agatagera/db-capstone-project/assets/165961165/f8f301d6-15a6-4446-8ea9-5422d465144a)
 
+## Create a line chart to show the sales trend from 2019 to 2022
 
+![Profit_chart](https://github.com/agatagera/db-capstone-project/assets/165961165/2bf6ae74-8ce3-40f8-8a27-359a6bddd5f4)
+
+## Create a bubble chart of sales for all customers
+![Sales_bubble_chart](https://github.com/agatagera/db-capstone-project/assets/165961165/e6c4a3a7-b624-46e7-9522-d9b4de1b2aed)
+
+## Create a Bar chart that shows the sales of the Turkish, Italian and Greek cuisines
+
+![Cuisine_sales_and_profit](https://github.com/agatagera/db-capstone-project/assets/165961165/05073803-fd41-4a4e-b8a6-5f2f9210172d)
+
+## Create an interactive dashboard that combines the Bar chart called Customers sales and the Sales Bubble Chart
+![Customer_sales](https://github.com/agatagera/db-capstone-project/assets/165961165/227178e5-440b-4234-8b21-dd010a32c597)
 
 
