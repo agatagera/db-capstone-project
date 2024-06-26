@@ -259,6 +259,89 @@ END//
 
 DELIMITER ;
 ```
+## Create a new procedure called AddBooking
+```
+DELIMITER //
+
+CREATE PROCEDURE `AddBooking` (
+    IN p_booking_id INT,
+    IN p_booking_date DATE,
+    IN p_table_number INT,
+    IN p_customer_id INT
+)
+BEGIN
+    DECLARE v_count INT;
+    SELECT COUNT(*) INTO v_count
+    FROM bookings
+    WHERE `BookingID` = p_booking_id;
+
+    IF v_count > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Booking ID already exists. Cannot insert.';
+    ELSE
+        INSERT INTO bookings (`BookingID`, `Date`, `TableNumber`, `CustomerID`)
+        VALUES (p_booking_id, p_booking_date, p_table_number, p_customer_id);
+
+        SELECT CONCAT('Booking ', p_booking_id, ' added successfully.') AS message;
+    END IF;
+END;//
+
+DELIMITER ;
+```
+## Create a new procedure called UpdateBooking
+```
+DELIMITER //
+
+CREATE PROCEDURE `UpdateBooking` (
+    IN p_booking_id INT,
+    IN p_booking_date DATE
+)
+BEGIN
+    DECLARE v_count INT;
+    SELECT COUNT(*) INTO v_count
+    FROM bookings
+    WHERE BookingID = p_booking_id;
+
+    IF v_count = 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Booking ID does not exist. Cannot update.';
+    ELSE
+        -- Update the booking record
+        UPDATE bookings 
+        SET `Date` = p_booking_date 
+        WHERE BookingID = p_booking_id;
+
+        SELECT CONCAT('Booking ', p_booking_id, ' updated successfully.') AS Confirmation;
+    END IF;
+END;//
+
+DELIMITER ;
+```
+## Create a new procedure called CancelBooking
+```
+DELIMITER //
+
+CREATE PROCEDURE `CancelBooking` (
+    IN p_booking_id INT
+)
+BEGIN
+    DECLARE v_count INT;
+    SELECT COUNT(*) INTO v_count
+    FROM bookings
+    WHERE BookingID = p_booking_id;
+
+    IF v_count = 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Booking ID does not exist. Cannot cancel.';
+    ELSE
+        DELETE FROM bookings
+        WHERE BookingID = p_booking_id;
+        SELECT CONCAT('Booking ', p_booking_id, ' cancelled successfully.') AS Confirmation;
+    END IF;
+END;//
+
+DELIMITER ;
+```
 
 
 
