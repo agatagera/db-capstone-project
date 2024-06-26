@@ -1,5 +1,6 @@
 # db-captone-project
 
+The db-captone-project of the Meta Database Engineer Professional Certificate course is designed to demonstrate the skills learnt in database design, implementation and optimisation. This project focuses on a real-world scenario involving the analysis and the implementation of improvements to enhance database performance and scalability.
 ## Create an ER diagram data model 
 
 ![LittleLemonDM](https://github.com/agatagera/db-capstone-project/assets/165961165/c11013c5-8739-4fd9-a928-13c18472fe2e)
@@ -359,5 +360,32 @@ DELIMITER ;
 
 ## Create an interactive dashboard that combines the Bar chart called Customers sales and the Sales Bubble Chart
 ![Customer_sales](https://github.com/agatagera/db-capstone-project/assets/165961165/227178e5-440b-4234-8b21-dd010a32c597)
+
+## Creating a Python environment to connect with the database and interact with the data it holds
+
+```
+!pip install mysql-connector-python
+import mysql.connector as connector
+
+connection = connector.connect(user="user_2", password="password")
+cursor = connection.cursor()
+cursor.execute("USE LittleLemonDB")
+
+creating_joins =
+"""
+SELECT customers.Names, 
+customers.Contacts, 
+orders.TotalCost
+FROM customers
+INNER JOIN orders ON customers.customerID = orders.customerID
+WHERE orders.TotalCost > 60;
+
+"""
+
+cursor.execute(creating_joins)
+results =cursor.fetchall()
+print(cursor.column_names)
+print(results)
+```
 
 
